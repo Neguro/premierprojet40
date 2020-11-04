@@ -14,7 +14,28 @@ class PrincipalController extends AbstractController
     public function index(): Response
     {
         return $this->render('principal/index.html.twig', [
-            'controller_name' => 'PrincipalController',
+            'controller_name' => "Symfony, c'est super"
         ]);
     }
+    
+     /**
+     * @Route("/welcome/{nom}")
+     */
+    
+     public function welcome(string $nom): Response 
+     {
+         return $this->render('principal/welcome.html.twig', [
+             "nom" => $nom
+         ]);
+     }
+     
+     /**
+     * @Route("/info/{cd}&{genre}")
+     */
+     public function info(string $cd, string $genre) : Response
+     {
+         return $this->render('principal/info.html.twig', [
+             "cd" => $cd, "genre" => $genre 
+         ]);
+     }
 }
