@@ -51,4 +51,26 @@ class PrincipalController extends AbstractController
          $titre = "Liste des employes";
          return $this->render('principal/employes.html.twig',compact('titre','employes'));
      }
+     
+     /**
+     * @Route("/employe/{id}", name="unemploye", requirements={"id":"\d+"})
+     * @param RegisteryInterface $doctrine 
+     */
+     public function afficheUnEmploye(ManagerRegistry $doctrine, int $id)
+     {
+         $employe = $doctrine->getRepository(Employe::class)->find($id);
+         $titre = "Employe n°" . $id;
+         return $this->render('principal/unemploye.html.twig',compact('titre','employe'));
+     }
+     
+     /**
+     * @Route("/employe/{id}", name="employetout", requirements={"id":"\d+"})
+     * @param RegisteryInterface $doctrine 
+     */
+     public function afficheUnEmployeTout(ManagerRegistry $doctrine, int $id)
+     {
+         $employe = $doctrine->getRepository(Employe::class)->find($id);
+         $titre = "Employe n°" . $id;
+         return $this->render('principal/unemployetout.html.twig',compact('titre','employe'));
+     }
 }
